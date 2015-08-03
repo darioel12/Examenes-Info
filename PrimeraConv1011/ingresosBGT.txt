@@ -1,0 +1,6 @@
+1 200 Mar Alvarez
+1 650 Laura Ruiz
+1 1150 Carmen Calvo
+1 3500 Juan Perez
+1 4800 Raul Antunez
+1 5600 Mario Lacruz

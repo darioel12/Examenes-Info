@@ -1,0 +1,6 @@
+4 3500 1250 -3000 2500 Luis Alberto Pérez Martín
+2 3500 200 Luis Alberto Diez
+3 100 2300 -550 Carlos Perez
+1 450 Pedro Ferrer
+4 100 100 250 3000 Maria Pascual
+3 800 250 10000 Laura Jimenez
