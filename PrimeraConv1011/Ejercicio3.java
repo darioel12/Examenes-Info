@@ -1,80 +1,78 @@
 package PrimeraConv1011;
 import java.util.*;
-public class Ejercicio3 {
-
+public class Ejercicio3{
+	
 	public static Scanner entrada=new Scanner(System.in);
 	
-	public static void main(String[] args) {
-		long numero;
-		long numeroaux=0;
+	public static String [] numeroBaseFormato(long numero){
+		String linea="";
+		String lineaAux="";
+		String [] vNumeros=new String [34];
 		long cociente=0;
 		long resto=0;
-		char b='A';
-		int contador;
-		int contador2=0;
-		int contador3=0;
+		int contador=0;
+		long contador2=2;
+		long numeroAux=numero;
 		char c;
-		String cadena="";
-		System.out.println("Introduce un entero (base 10): ");
-		numero=entrada.nextLong();
-		numeroaux=numero;
-		
- 		for(int i=2;i<=36;i++){
- 			System.out.print("Base ");
- 			System.out.printf("%3d ",i);
- 			System.out.print(": ");
- 			if(i<=10){
- 				while(numero/i>=1){
- 					cociente=numero/i;
- 					resto=numero%i;
- 					numero=cociente;
-					cadena+=resto+"";
-					resto=0;
- 				}
- 				cadena+=cociente+"";
- 			}else{
- 				while(numero/i>=1){
- 					cociente=numero/i;
- 					resto=numero%i;
- 					if(resto>=10){
- 						b=(char) (b+resto-10);
- 						cadena+=b+"";
- 					}else{
- 						cadena+=resto+"";
- 					}
- 					numero=cociente;
-					resto=0;
-					b='A';
- 				}
- 				if(cociente>10){
- 					b=(char)(b+numero-10);
- 					cadena+=b+"";
- 				}else{
- 					cadena+=cociente+"";
- 				}
- 			}
- 			contador=cadena.length()-1;
- 			while(contador3+contador<contador2){
- 				cadena+=" ";
- 				contador3++;
- 			}
- 			if(contador2<contador){
- 				contador2=contador;
- 			}
- 			contador=cadena.length()-1;
- 			while(contador>=0){
- 				c=cadena.charAt(contador);
- 				System.out.print(c);
- 				contador--;
- 			}
- 			cadena="";
- 			
- 			contador3=0;
- 			cociente=0;
- 			numero=numeroaux;
- 			System.out.println();
- 		}
-			
+		char d='A';
+		while(contador2<=36){
+			while(numero/contador2>=1){
+				cociente=numero/contador2;
+				resto=numero%contador2;
+				if(resto>=10){
+					d=(char)(d+resto-10);
+					linea+=d;
+				}else{
+					linea+=resto;
+				}
+				d='A';
+				numero=cociente;
+				resto=0;
+			}
+			linea+=cociente;
+			contador=linea.length()-1;
+			while(contador>=0){
+				c=linea.charAt(contador);
+				lineaAux+=c;
+				contador--;
+			}
+			if(contador2==36){
+				vNumeros[vNumeros.length-1]=lineaAux;
+			}else{
+				vNumeros[(int)contador2-2]=lineaAux;
+			}
+			numero=numeroAux;
+			linea="";
+			lineaAux="";
+			contador2=contador2+1;
+		}
+		return vNumeros;
 	}
-
+	
+	public static void main(String [] args){
+		System.out.println("Dame un numero en base 10 ");
+		long numero=entrada.nextLong();
+		int base=2;
+		String [] a=numeroBaseFormato(numero);
+		String aux=a[0];
+		int contador=0;
+		int contador2=0;
+		for(int i=0;i<a.length;i++){
+			System.out.print("Base ");
+			System.out.printf("%3d ",base);
+			System.out.print(":");
+			if(i!=0){
+				contador=aux.length()-a[i].length();
+				while(contador2<contador){
+					System.out.print(" ");
+					contador2++;
+				}
+				contador=0;
+				contador2=0;
+			}
+			System.out.print(a[i]);
+			System.out.println();
+			base++;
+		}
+	}
 }
